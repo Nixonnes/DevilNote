@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-gray-900 dark:text-white ">
             {{ __('Изменение пароля') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-600 dark:text-white">
             {{ __('Если вы давно пользуетесь аккаунтом, периодическая смена пароля обеспечивает его безопасность.') }}
         </p>
     </header>

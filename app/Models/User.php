@@ -45,8 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function notes()
+    public function notes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Note::class);
+    }
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function likedNotes()
+    {
+        return $this->belongsToMany(Note::class, 'likes');
     }
 }

@@ -21,10 +21,10 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50 ">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-            <div class="relative min-h-screen flex flex-col  items-center justify-center bg-amber-500 selection:bg-[#FF2D20] selection:text-white">
+            <div class="relative min-h-screen flex flex-col text-black items-center justify-center bg-amber-500 selection:bg-[#FF2D20] selection:text-white dark:bg-black dark:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header>
-                        <nav class="h-20 flex flex-col flex-wrap justify-end font-bold text-black">
+                        <nav class="h-20 flex flex-col flex-wrap justify-end font-bold">
                             <div class="flex align-center ">
                                 <h1 class="text-3xl max-w-fit">DevilNote</h1>
                                 <div class="relative left-1/3">
@@ -35,13 +35,13 @@
                             </div>
 
                         </nav>
-                        <div class="text-black text-5xl font-semibold text-center mt-72">
+                        <div class="text-5xl font-semibold text-center mt-72">
                             <h1>DevilNote</h1>
                             <p class="text-xl mt-3">
                                 Discover new experience! Making of notes can be exciting adventure!"
                             </p>
-                            <button class="min-w-32 mt-6 p-2.5 bg-white border-solid border-2 border-black text-2xl rounded-lg font-semibold hover:bg-black hover:text-white"> <a href="/login">Log in </a></button>
-                            <button class= " min-w-32 mt-6 p-2.5 bg-white border-solid border-2 border-black text-2xl rounded-lg font-semibold hover:bg-black hover:text-white"> <a href="/register">Register </a></button>
+                            <button class="min-w-32 mt-6 p-2.5 bg-white text-black border-solid border-2 border-black text-2xl rounded-lg font-semibold hover:bg-black hover:text-white"> <a href="/login">Log in </a></button>
+                            <button class= " min-w-32 mt-6 p-2.5 bg-white text-black border-solid border-2 border-black text-2xl rounded-lg font-semibold hover:bg-black hover:text-white"> <a href="/register">Register </a></button>
                         </div>
                     </header>
 
@@ -53,7 +53,7 @@
 
 
                 </div>
-                <footer class="py-16 text-center text-2xl font-semibold mt-auto max-h-fit text-black dark:text-white/70">
+                <footer class="py-16 text-center text-2xl font-semibold mt-auto max-h-fit dark: text-white/70">
                     ArtiFex &copy; <?= date('Y'); ?>
                 </footer>
             </div>

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.content {
+    height:540px;
+}
+.liked {
+    color: #ffcc01;
+    background-color: #000000;
+}
