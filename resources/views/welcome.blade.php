@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+x-data :class="$store.darkMode.on && 'dark' ">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        @moonShineAssets
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -28,7 +30,7 @@
                             <div class="flex align-center ">
                                 <h1 class="text-3xl max-w-fit">DevilNote</h1>
                                 <div class="relative left-1/3">
-                                    <a class="text-2xl p-3 ms-16" href="/dashboard">Dashboard</a>
+                                    <a class="text-2xl p-3 ms-16" href="/admin">Dashboard</a>
                                     <a class="text-2xl p-3 ms-16" href="/about">About</a>
                                     <a class="text-2xl p-3 ms-16" href="/contacts">Contact Us</a>
                                 </div>
@@ -53,7 +55,7 @@
 
 
                 </div>
-                <footer class="py-16 text-center text-2xl font-semibold mt-auto max-h-fit dark: text-white/70">
+                <footer class="py-16 text-center text-2xl font-semibold  mt-auto max-h-fit">
                     ArtiFex &copy; <?= date('Y'); ?>
                 </footer>
             </div>

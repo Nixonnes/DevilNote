@@ -10,13 +10,16 @@
         <x-slot name="sidebar">
             <div class="p-3 mt-48 font-semibold text-lg">
                 <div class="flex justify-center p-4 w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                    <a href="notes/create">Новая заметка</a>
+                    <a href="{{route('notes.create')}}">Новая заметка</a>
                 </div>
                 <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
                     <a href="#">Мои заметки</a>
                 </div>
                 <div class="flex justify-center w-full p-4 hover:bg-amber-900 rounded-lg  active:bg-gray-500">
                     <a href="#">Сообщества</a>
+                </div>
+                <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                    <a href="#">Категории</a>
                 </div>
 
             </div>

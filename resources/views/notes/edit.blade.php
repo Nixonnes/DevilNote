@@ -13,7 +13,9 @@
             <div class="flex justify-center w-full p-4 hover:bg-amber-900 rounded-lg active:bg-gray-500">
                 <a href="#">Сообщества</a>
             </div>
-
+            <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                <a href="#">Категории</a>
+            </div>
         </div>
     </x-slot>
     <div class="m-4  min-h-svh border border-gray-300 p-1 rounded-lg">

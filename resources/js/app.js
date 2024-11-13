@@ -5,6 +5,7 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 
 Alpine.start();
+console.log("app.js загружен и выполняется!");
 
 window.confirmDelete = function(noteId) {
     // Устанавливаем action у формы с ID заметки
@@ -40,6 +41,28 @@ document.getElementById('like-btn').addEventListener('click', function() {
                 console.log(data.message);
             })
 
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM полностью загружен!");
+    // Найти кнопки и блоки
+    const selectCategoryButton = document.getElementById('select-category-btn');
+    const createCategoryButton = document.getElementById('create-category-btn');
+    const categoryInput = document.getElementById('new-category-input');
+    const existingCategories = document.getElementById('existing-categories');
+
+    // Показать/скрыть существующие категории
+    selectCategoryButton.addEventListener('click', () => {
+        categoryInput.style.display = 'none';
+        existingCategories.style.display = 'block';
+    });
+
+    // Показать поле для новой категории
+    createCategoryButton.addEventListener('click', () => {
+        existingCategories.style.display = 'none';
+        categoryInput.style.display = 'block';
+    });
 });
 
 

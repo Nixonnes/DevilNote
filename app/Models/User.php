@@ -9,6 +9,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    const ROLE_ADMIN = 0;
+    const ROLE_USER = 1;
+
+    public static function getRoles()
+    {
+
+    }
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -52,9 +59,5 @@ class User extends Authenticatable
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Comment::class);
-    }
-    public function likedNotes()
-    {
-        return $this->belongsToMany(Note::class, 'likes');
     }
 }

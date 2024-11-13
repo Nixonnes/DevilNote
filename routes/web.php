@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NoteController;
@@ -16,7 +18,7 @@ Route::get('/home', [NoteController::class, 'index'])->middleware(['auth', 'veri
 
 Route::get('notes/create', [NoteController::class, 'create'])->middleware(['auth', 'verified'])->name('notes.create');
 Route::post('/notes/create', [NoteController::class, 'store'])->middleware(['auth','verified'])->name('notes.store');
-Route::get('/notes/{id}', [NoteController::class, 'show'])->middleware(['auth', 'verified'])->name('notes.show');
+Route::get('/notes/{id}', [NoteController::class, 'show'])->middleware(['auth', 'verified'])->name('notes.show')->whereNumber('id');
 Route::get('/notes/{id}/edit', [NoteController::class, 'edit'])->middleware(['auth', 'verified'])->name('notes.edit');
 Route::patch('/notes/{id}', [NoteController::class, 'update'])->middleware(['auth', 'verified'])->name('notes.update');
 Route::get('{user_id}/notes', [NoteController::class, 'showUserNotes'])->middleware(['auth', 'verified'])->name('user.notes');
@@ -31,4 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/notes/search', [NoteController::class, 'search'])->name('notes.search');
 require __DIR__.'/auth.php';
