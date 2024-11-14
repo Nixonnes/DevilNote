@@ -4,22 +4,6 @@
             {{__('Результаты поиска') }}
         </h2>
     </x-slot>
-    <x-slot name="sidebar">
-        <div class="p-3 mt-48 font-semibold text-lg">
-            <div class="flex justify-center p-4 w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                <a href="{{route('notes.create')}}">Новая заметка</a>
-            </div>
-            <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                <a href="{{route('user.notes', ['user_id' => auth()->user()->getAuthIdentifier()] )}}">Мои заметки</a>
-            </div>
-            <div class="flex justify-center w-full p-4 hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                <a href="#">Сообщества</a>
-            </div>
-            <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                <a href="#">Категории</a>
-            </div>
-        </div>
-    </x-slot>
     <form method="GET" action="{{route('notes.search')}}">
         @csrf
         <input class="w-full rounded border-gray-300" name="query" placeholder="Что вы хотите найти?">

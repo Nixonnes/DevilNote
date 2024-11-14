@@ -23,7 +23,7 @@
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow dark:bg-amber-600">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
@@ -31,11 +31,26 @@
             <div class="flex flex-row">
 
 
-            @isset($sidebar)
-                <div class=" p-2 w-56 min-h-dvh bg-amber-500 border border-gray-400 rounded-lg dark:bg-black dark:text-white">
-                    {{$sidebar}}
+
+                <div class=" p-2 w-56 min-h-dvh bg-amber-500 border-r border-black rounded dark:bg-black dark:text-white">
+                    <div class="p-3 mt-48 font-semibold text-lg">
+                        <div class="flex justify-center p-4 w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                            <a href="{{route('notes.create')}}">Новая заметка</a>
+                        </div>
+                        <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                            <a href="{{route('user.notes', ['user_id' => Auth::id()])}}">Мои заметки</a>
+                        </div>
+                        <div class="flex justify-center w-full p-4 hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                            <a href="#">Сообщества</a>
+                        </div>
+                        <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
+                            <a href="{{route('categories.index')}}">Категории</a>
+                        </div>
+
+                    </div>
+
                 </div>
-            @endisset
+
             <!-- Page Content -->
             <main class="flex-grow">
                 {{ $slot }}

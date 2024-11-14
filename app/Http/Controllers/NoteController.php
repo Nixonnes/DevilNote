@@ -77,6 +77,7 @@ class NoteController extends Controller
         return view('notes.show', [
             'note' => $note,
             'isLiked' => $isLiked,
+            'categories' => Category::all()
         ])->with('comments', Comment::with('user')->where('note_id', $note->id)->get());
     }
 

@@ -1,6 +1,7 @@
-<nav x-data="{ open: false }" class="bg-amber-500 border-b border-gray-100 dark:bg-black dark:text-white">
+<nav x-data="{ open: false }" class="bg-amber-500 border-black border-b rounded dark:bg-black dark:text-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -95,6 +96,11 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
+
         </div>
+
     </div>
+
+
+
 </nav>

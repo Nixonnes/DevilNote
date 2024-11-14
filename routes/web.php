@@ -14,18 +14,24 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [NoteController::class, 'index'])->middleware(['auth', 'verified'])->name('notes.index');
+// Notes
+Route::prefix('notes')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/create', [NoteController::class, 'create'])->name('notes.create');
+    Route::post('/create', [NoteController::class, 'store'])->name('notes.store');
+    Route::get('/{id}', [NoteController::class, 'show'])->name('notes.show')->whereNumber('id');
+    Route::get('/{id}/edit', [NoteController::class, 'edit'])->name('notes.edit');
+    Route::patch('/{id}', [NoteController::class, 'update'])->name('notes.update');
+    Route::delete('/{id}', [NoteController::class, 'destroy'])->name('notes.destroy');
+    Route::post('/{id}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/{id}/like', [LikeController::class, 'like'])->name('like.note');
+});
 
 
-Route::get('notes/create', [NoteController::class, 'create'])->middleware(['auth', 'verified'])->name('notes.create');
-Route::post('/notes/create', [NoteController::class, 'store'])->middleware(['auth','verified'])->name('notes.store');
-Route::get('/notes/{id}', [NoteController::class, 'show'])->middleware(['auth', 'verified'])->name('notes.show')->whereNumber('id');
-Route::get('/notes/{id}/edit', [NoteController::class, 'edit'])->middleware(['auth', 'verified'])->name('notes.edit');
-Route::patch('/notes/{id}', [NoteController::class, 'update'])->middleware(['auth', 'verified'])->name('notes.update');
 Route::get('{user_id}/notes', [NoteController::class, 'showUserNotes'])->middleware(['auth', 'verified'])->name('user.notes');
-Route::delete('/notes/{id}', [NoteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('notes.destroy');
 
-Route::post('/notes/{id}/comments', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comments.store');
-Route::post('/notes/{id}/like', [LikeController::class, 'like'])->middleware(['auth', 'verified'])->name('like.note');
+Route::get('/categories', [CategoryController::class, 'index'])->middleware(['auth', 'verified'])->name('categories.index');
+Route::get('/categories/search', [CategoryController::class, 'search'])->middleware(['auth', 'verified'])->name('categories.search');
+
 Route::delete('/notes/{id}/unlike', [LikeController::class, 'unlike'])->middleware(['auth', 'verified'])->name('unlike.note');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,68 +1,48 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$title ?? __('Главная') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
-        <x-slot name="sidebar">
-            <div class="p-3 mt-48 font-semibold text-lg">
-                <div class="flex justify-center p-4 w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                    <a href="{{route('notes.create')}}">Новая заметка</a>
-                </div>
-                <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                    <a href="{{route('user.notes', ['user_id' => auth()->user()->getAuthIdentifier()] )}}">Мои заметки</a>
-                </div>
-                <div class="flex justify-center w-full p-4 hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                    <a href="#">Сообщества</a>
-                </div>
-                <div class="flex justify-center p-4  w-full hover:bg-amber-900 rounded-lg  active:bg-gray-500">
-                    <a href="#">Категории</a>
-                </div>
-            </div>
-        </x-slot>
         <div class="max-w-7xl mx-auto sm:pr-4 lg:pr-8">
-            <div class=" overflow-hidden shadow-sm sm:rounded-lg">
-                <div >
-
-                    <form method="GET" action="{{route('notes.search')}}">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div>
+                    <form method="GET" action="{{ route('notes.search') }}">
                         @csrf
                         <input class="w-full rounded border-gray-300" name="query" placeholder="Что вы хотите найти?">
                     </form>
-
                 </div>
-                    @isset($notes)
-                        @foreach($notes as $note)
 
-
-                            <div class=" h-52 overflow-hidden m-2 border border-gray-300 rounded-lg p-6 bg-gray-100 dark:bg-indigo-800 dark:text-stone-950">
+                @isset($notes)
+                    @foreach($notes as $note)
+                        <div class="h-54 m-2 border border-gray-400 rounded p-2 bg-gray-100 dark:bg-indigo-800 dark:text-stone-950">
+                            <div class="max-h-48 overflow-hidden"> <!-- Обеспечиваем скролл для текста -->
+                                <div
+                                    <h3>{{ $note->created_at->format('d.m.Y H:i') }}</h3>
+                                </div>
                                 <div>
-                                    <h3>{{$note->created_at->format('d.m.Y H:i')}}</h3>
+                                    <h1 class="text-3xl font-bold">
+                                        <a href="{{ route('notes.show', ['id' => $note->id ]) }}">{{ $note->title }}</a>
+                                    </h1>
                                 </div>
-                                <div class>
-                                    <h1 class="text-3xl font-bold"><a href="{{route('notes.show', ['id' => $note->id ])}}">{{$note->title}}</a></h1>
+                                <div class="max-h-32 mt-3 break-words max-w-7xl overflow-hidden">
+                                    <pre class="whitespace-pre-wrap text-lg">{{ $note->content }}</pre>
                                 </div>
-                                <div class="mt-3 break-words max-w-7xl ">
-                                    <pre class="whitespace-pre-wrap text-lg">{{$note->content}}</pre>
-                                </div>
-                                @isset($categories)
-                                    @foreach($categories as $category)
-                                @if($category->id == $note->category_id)
-                                <div class="border rounded-lg border-black max-w-fit m-5 p-1 bg-amber-600 font-semibold">
-                                    {{$category->title}}
-                                </div>
-                                        @endif
-
-                                    @endforeach
-                                @endisset
                             </div>
 
-                        @endforeach
+                            <!-- Категория рендерится вне ограниченного по высоте блока -->
+                            @isset($categories)
+                                @foreach($categories as $category)
+                                    @if($category->id == $note->category_id)
+                                        <div class="max-w-fit p-1 text-gray-500 font-semibold bg-gray-200 dark:bg-indigo-700 rounded">
+                                            {{ $category->title }}
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endisset
+                        </div>
+                    @endforeach
+                @endisset
 
-                        @endisset
-
-                </div>
+                @if(count($notes) < 1)
+                    <p class="mt-24 ml-6 text-2xl text-gray-400">У вас нет заметок</p>
+                @endif
             </div>
         </div>
     </div>
